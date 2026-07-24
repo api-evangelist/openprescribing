@@ -1,0 +1,33 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/openprescribing-openapi.yml + openprescribing/api/*.py
+standards:
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented HTTP GET endpoints under a versioned /api/1.0/ path.
+  - id: json
+    conforms: true
+    evidence: Default application/json responses.
+  - id: csv
+    conforms: true
+    evidence: text/csv responses via ?format=csv or .csv suffix.
+  - id: geojson
+    conforms: true
+    evidence: /org_location/ returns a GeoJSON FeatureCollection.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth; the API is public and key-less.
+  - id: oidc
+    conforms: false
+  - id: fhir
+    conforms: false
+    evidence: Academic analytics API over NHS open data, not a FHIR clinical system.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'Errors use the DRF default {"detail": ...} envelope, not application/problem+json.'
+  - id: pagination
+    conforms: false
+    evidence: No cursor/offset pagination; queries scoped by code/org/date parameters.
+  - id: idempotency
+    conforms: true
+    evidence: All operations are read-only HTTP GET and therefore naturally idempotent.

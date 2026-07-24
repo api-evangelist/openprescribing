@@ -94,6 +94,10 @@ apis:
   - type: APIReference
     url: https://openprescribing.net/api/
 common:
+- type: AgenticAccess
+  url: agentic-access/openprescribing-agentic-access.yml
+- type: DomainSecurity
+  url: security/openprescribing-domain-security.yml
 - type: Website
   url: https://openprescribing.net/
 - type: DeveloperPortal
@@ -112,6 +116,32 @@ common:
   url: https://github.com/bennettoxford/openprescribing
 - type: Blog
   url: https://www.bennett.ox.ac.uk/openprescribing/blog/
+- type: GettingStarted
+  url: https://openprescribing.net/api/
+- type: OpenAPI
+  url: openapi/openprescribing-openapi.yml
+- type: Authentication
+  url: authentication/openprescribing-authentication.yml
+- type: Conventions
+  url: conventions/openprescribing-conventions.yml
+- type: ErrorCatalog
+  url: errors/openprescribing-problem-types.yml
+- type: DataModel
+  url: data-model/openprescribing-data-model.yml
+- type: Lifecycle
+  url: lifecycle/openprescribing-lifecycle.yml
+- type: Conformance
+  url: conformance/openprescribing-conformance.yml
+- type: WellKnown
+  url: well-known/openprescribing-well-known.yml
+- type: MCPServer
+  url: mcp/openprescribing-mcp.yml
+- type: LLMsTxt
+  url: llms/openprescribing-llms.txt
+- type: Overlay
+  url: overlays/openprescribing-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

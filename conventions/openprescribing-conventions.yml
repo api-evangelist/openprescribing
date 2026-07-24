@@ -1,0 +1,55 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/openprescribing-openapi.yml + github.com/bennettoxford/openprescribing
+description: >-
+  Cross-cutting request/response conventions for the OpenPrescribing API, derived from the
+  public Django REST Framework source and the /api/ documentation.
+authentication:
+  style: none
+  detail: Public key-less API; no auth header required. See authentication/openprescribing-authentication.yml
+content_negotiation:
+  formats: [json, csv]
+  default: json
+  mechanism: >-
+    Format is selected by a `format` query parameter (?format=csv | ?format=json) or a URL
+    suffix (.json / .csv) via DRF format_suffix_patterns. Organisation-location endpoints
+    return GeoJSON (application/json).
+idempotency:
+  supported: false
+  detail: >-
+    The API is read-only (all operations are HTTP GET); there is no idempotency-key contract
+    because there are no state-changing operations to de-duplicate. GET requests are naturally
+    idempotent.
+pagination:
+  supported: false
+  detail: >-
+    Endpoints return the full result set for the query (e.g. all monthly rows across the
+    available 5-year window, or all matching organisations). There is no cursor/offset
+    pagination; queries are scoped by BNF code, organisation and date parameters instead.
+list_parameters:
+  detail: >-
+    Multi-value parameters (code, org, measure, tags, codes, keys) accept a comma-separated
+    list, parsed server-side by view_utils.param_to_list.
+versioning:
+  scheme: uri-path
+  current: "1.0"
+  detail: The version is embedded in the path as /api/1.0/. Only version 1.0 is published.
+caching:
+  detail: >-
+    Responses are served behind Cloudflare. The /tariff/ endpoint is cached when no BNF codes
+    are supplied (the full ~35MB drug tariff); code-scoped tariff requests are not cached
+    because they include regularly-updated NCSO concession data.
+rate_limiting:
+  documented: false
+  detail: No published rate limits or rate-limit response headers.
+error_envelope:
+  shape: '{"detail": "<message>"}'
+  format: drf-default
+  detail: >-
+    Errors use the Django REST Framework default envelope — a JSON object with a single
+    `detail` string. Not RFC 9457 problem+json. See errors/openprescribing-problem-types.yml
+cross_links:
+  errors: errors/openprescribing-problem-types.yml
+  lifecycle: lifecycle/openprescribing-lifecycle.yml
+  authentication: authentication/openprescribing-authentication.yml
+  data_model: data-model/openprescribing-data-model.yml

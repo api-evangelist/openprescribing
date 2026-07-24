@@ -1,0 +1,33 @@
+generated: '2026-07-24'
+method: searched
+source: https://openprescribing.net/api/ + https://github.com/bennettoxford/openprescribing
+versioning:
+  scheme: uri-path
+  current: "1.0"
+  detail: The API version is embedded in the path (/api/1.0/). Only v1.0 is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is published.
+    The /api/ page cautions that "no registration is required, but please be aware this may
+    change" — a soft forward-looking notice rather than a versioned deprecation policy.
+sla:
+  url: null
+  uptime_target: null
+  detail: No published SLA or uptime commitment (free academic open-data service).
+status_page: null
+status_page_detail: No dedicated status page found.
+data_freshness:
+  window: rolling 5 years
+  cadence: monthly
+  detail: >-
+    Reflects the English Prescribing Dataset published monthly by the NHS Business Services
+    Authority; the API serves the most recent ~5 years.
+change_communication:
+  releases: none
+  detail: >-
+    No GitHub releases/tags and no dedicated dated API changelog. Changes (especially to
+    measures) are announced on the Bennett Institute blog.
+  blog: https://www.bennett.ox.ac.uk/openprescribing/blog/
+deprecated_operations: []

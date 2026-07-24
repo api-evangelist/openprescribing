@@ -1,0 +1,11 @@
+generated: '2026-07-24'
+method: generated
+skills:
+  - file: openprescribing-analyse-drug-spending.md
+    name: Analyse prescribing spending for a drug
+    api: openapi/openprescribing-openapi.yml
+    operations: [getBnfCodes, getSpending, getSpendingByOrg]
+  - file: openprescribing-compare-measures.md
+    name: Compare prescribing-quality measures across organisations
+    api: openapi/openprescribing-openapi.yml
+    operations: [getOrgCodes, getMeasures, getMeasureByPractice, getMeasureBySicbl, getMeasureNumeratorsByOrg]

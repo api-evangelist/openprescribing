@@ -1,0 +1,13 @@
+generated: '2026-07-24'
+method: searched
+source: https://openprescribing.net/api/
+docs: https://openprescribing.net/api/
+summary:
+  types: [none]
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    OpenPrescribing exposes a fully public, key-less REST API. No registration, API key,
+    bearer token or OAuth is required to call any /api/1.0/ endpoint. The documentation
+    notes that a registration requirement "may change" in future, but none exists today.
+schemes: []

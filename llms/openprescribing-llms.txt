@@ -1,0 +1,29 @@
+# OpenPrescribing
+
+> OpenPrescribing.net is a free, public, key-less REST API over English NHS primary-care (GP) prescribing data, built and operated by the Bennett Institute for Applied Data Science at the University of Oxford. It turns the English Prescribing Dataset published monthly by the NHS Business Services Authority into spending, quantity and item counts by BNF code and NHS organisation, standardised prescribing-quality measures, drug-tariff and price-per-unit data, and organisation reference/boundary lookups. Responses are JSON, CSV or GeoJSON. No registration, API key or OAuth is required.
+
+## APIs
+- [OpenPrescribing Spending API](https://openprescribing.net/api/): spending, quantity and items by BNF code and NHS organisation
+- [OpenPrescribing Measures API](https://openprescribing.net/measure/): standardised prescribing-quality and safety measures
+- [OpenPrescribing Information API](https://openprescribing.net/api/): BNF, organisation and boundary reference lookups
+
+## Specs
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/openapi/openprescribing-openapi.yml): API Evangelist-generated OpenAPI 3.1 (19 operations) derived from the public MIT source
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/authentication/openprescribing-authentication.yml): none required (public key-less API)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/conventions/openprescribing-conventions.yml): content negotiation, versioning, error envelope
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/errors/openprescribing-problem-types.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/data-model/openprescribing-data-model.yml)
+- [Agentic access](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/agentic-access/openprescribing-agentic-access.yml)
+
+## Docs
+- [API documentation](https://openprescribing.net/api/)
+- [About](https://openprescribing.net/about/)
+- [FAQ](https://openprescribing.net/faq/)
+- [Blog](https://www.bennett.ox.ac.uk/openprescribing/blog/)
+- [Source code (GitHub, MIT)](https://github.com/bennettoxford/openprescribing)
+
+## Notes
+- Base URL: https://openprescribing.net/api/1.0
+- All operations are HTTP GET (read-only). Format via ?format=csv|json or .csv/.json suffix.
+- BNF codes and NHS organisation codes (practice, PCN, Sub-ICB Location/CCG, ICB/STP, Regional Team) drive most queries.
+- Attribution requested: "OpenPrescribing.net, Bennett Institute for Applied Data Science, University of Oxford".

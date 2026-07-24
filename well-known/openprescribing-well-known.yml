@@ -1,0 +1,28 @@
+generated: '2026-07-24'
+method: searched
+host: https://openprescribing.net
+note: >-
+  All probes to openprescribing.net (including / and /api/) return HTTP 403 to automated
+  clients — the site is behind Cloudflare with bot protection that blocks non-browser user
+  agents. The 403s below are therefore inconclusive (WAF-blocked), not confirmed absent. No
+  .well-known document could be retrieved anonymously. The API itself requires no OAuth/OIDC,
+  so oauth/openid discovery documents are not expected to exist.
+documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: WAF-blocked (inconclusive)
+  - path: /.well-known/openid-configuration
+    status: 403
+    note: WAF-blocked; no OIDC (key-less API)
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    note: WAF-blocked; no OAuth (key-less API)
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    note: WAF-blocked
+  - path: /.well-known/api-catalog
+    status: 403
+    note: WAF-blocked
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    note: WAF-blocked

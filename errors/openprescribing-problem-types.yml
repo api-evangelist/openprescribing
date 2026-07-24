@@ -1,0 +1,46 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/openprescribing-openapi.yml + openprescribing/api/*.py (exception_handler, views_*)
+format: drf-default
+envelope: '{"detail": "<message>"}'
+note: >-
+  OpenPrescribing does not use RFC 9457 problem+json. Errors are the Django REST Framework
+  default JSON envelope with a single `detail` field. Problem types below are derived from the
+  raised exceptions in the public source and DRF defaults.
+problems:
+  - status: 400
+    title: Unknown organisation ID
+    detail_example: "Unknown organisation ID: {org_id}"
+    cause: An organisation code that does not exist was supplied (matrixstore UnknownOrgIDError).
+    source_operation: openapi/openprescribing-openapi.yml#getSpendingByOrg
+  - status: 400
+    title: Invalid or missing parameter
+    detail_example: "You must supply a date"
+    cause: >-
+      A required parameter was missing or invalid — e.g. no `date` on bubble/price_per_unit/
+      ghost_generics, or a code that fails validation (NotValid, ValidationError, MissingParameter).
+    source_operation: openapi/openprescribing-openapi.yml#getPricePerUnit
+  - status: 400
+    title: Unrecognised org_type
+    detail_example: "Error: unrecognised org_type parameter"
+    cause: An org_type value outside the accepted set (practice/pcn/ccg/sicbl/stp/icb/regional_team).
+    source_operation: openapi/openprescribing-openapi.yml#getSpendingByOrg
+  - status: 404
+    title: Date format invalid
+    detail_example: "Dates must be in YYYY-MM-DD format"
+    cause: A `date` value not in strict YYYY-MM-DD format (BadDate).
+    source_operation: openapi/openprescribing-openapi.yml#getBubble
+  - status: 404
+    title: Date outside available window
+    detail_example: "Date is outside the 5 years of data available"
+    cause: A well-formed date that falls outside the rolling 5-year data window (BadDate).
+    source_operation: openapi/openprescribing-openapi.yml#getBubble
+  - status: 405
+    title: Method not allowed
+    cause: Only GET is supported; other HTTP methods are rejected by DRF.
+  - status: 406
+    title: Not acceptable
+    cause: A requested format outside {json, csv} was negotiated.
+  - status: 500
+    title: Internal server error
+    cause: Unhandled server-side error.

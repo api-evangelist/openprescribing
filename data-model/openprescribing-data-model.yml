@@ -1,0 +1,58 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/openprescribing-openapi.yml + openprescribing/frontend/models (via api/views_*)
+description: >-
+  Entity-relationship model for the OpenPrescribing API, derived from the response schemas
+  and the organisation / BNF hierarchies referenced by the API views.
+entities:
+  - name: Organisation
+    description: >-
+      An NHS organisation in the prescribing hierarchy. org_type is one of practice, pcn,
+      ccg (Sub-ICB Location, formerly CCG), stp (ICB), regional_team.
+    id_field: code
+    endpoints: [getOrgCodes, getOrgDetails, getOrgLocation]
+  - name: BnfCode
+    description: >-
+      A node in the BNF classification hierarchy — chapter, section, paragraph, subparagraph,
+      chemical, product, or product format (presentation).
+    id_field: id
+    endpoints: [getBnfCodes]
+  - name: Spending
+    description: Monthly prescribing spending / quantity / items for a BNF code, optionally per organisation.
+    endpoints: [getSpending, getSpendingByOrg, getSpendingBySicbl, getSpendingByPractice]
+  - name: Measure
+    description: A standardised prescribing-quality/safety measure with numerator, denominator and calculated value per org per month.
+    id_field: measure
+    endpoints: [getMeasures, getMeasureByRegionalTeam, getMeasureByIcb, getMeasureBySicbl, getMeasureByPcn, getMeasureByPractice, getMeasureNumeratorsByOrg]
+  - name: TariffPrice
+    description: Drug-tariff price for a VMPP (with NCSO price-concession overlay) by month.
+    endpoints: [getTariff, getPricePerUnit, getGhostGenerics, getBubble]
+relationships:
+  - from: Spending
+    to: BnfCode
+    type: belongs_to
+    via: code
+  - from: Spending
+    to: Organisation
+    type: belongs_to
+    via: org / row_id
+  - from: Measure
+    to: Organisation
+    type: belongs_to
+    via: org
+  - from: Measure
+    to: BnfCode
+    type: has_many
+    via: numerator BNF codes
+  - from: Organisation
+    to: Organisation
+    type: belongs_to
+    via: parent_org_type
+    note: >-
+      practice belongs_to ccg (Sub-ICB Location) belongs_to stp (ICB) belongs_to regional_team;
+      practice also belongs_to pcn.
+  - from: TariffPrice
+    to: BnfCode
+    type: belongs_to
+    via: product / bnf_code
+org_hierarchy: [regional_team, stp, ccg, pcn, practice]

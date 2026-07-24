@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OpenPrescribing API
+  version: 1.0.0
+extends: openapi/openprescribing-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enrichment: '2026-07-24'
+      x-api-access-model: free-public-keyless
+      x-data-source: NHS Business Services Authority English Prescribing Dataset
+  - target: $.info
+    update:
+      x-agentic-access: agentic-access/openprescribing-agentic-access.yml
+  - target: $.components
+    update:
+      x-conventions: conventions/openprescribing-conventions.yml
+      x-error-catalog: errors/openprescribing-problem-types.yml
+      x-data-model: data-model/openprescribing-data-model.yml
