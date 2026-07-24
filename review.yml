@@ -1,0 +1,142 @@
+aid: openprescribing
+name: OpenPrescribing
+review:
+  question: Does OpenPrescribing expose a documented public API, and is any machine-readable
+    contract (OpenAPI or FHIR CapabilityStatement) available?
+  answer: true
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    OpenPrescribing.net is an open-data analytics service run by the Bennett
+    Institute for Applied Data Science, University of Oxford. It publishes a
+    free, documented, versioned REST API over the English Prescribing Dataset
+    (NHS Business Services Authority) covering GP primary-care prescribing in
+    England. The developer/documentation page lives at
+    https://openprescribing.net/api/ and the API is served under
+    https://openprescribing.net/api/1.0/. Data is returned as JSON, CSV, or
+    GeoJSON (append &format=json or &format=csv). The docs state: "Currently no
+    registration is required" — the API is anonymous and un-authenticated.
+
+    OpenPrescribing is an INDEPENDENT ACADEMIC PROJECT layered on NHS open data,
+    NOT an NHS FHIR clinical platform. There is no HL7 FHIR surface, no
+    CapabilityStatement/metadata endpoint, no SMART-on-FHIR, no
+    .well-known/smart-configuration, and no OAuth. It should not be confused
+    with NHS England's api.service.nhs.uk FHIR UK Core platform.
+
+    No machine-readable API description is published: the repository
+    (github.com/bennettoxford/openprescribing) contains no OpenAPI/Swagger
+    document (search returned 0 hits) and no FHIR conformance resource. The API
+    is a Django REST framework app whose routes were harvested verbatim from
+    source (openprescribing/api/urls.py) as the authoritative surface. The human
+    documentation is an HTML page (templates/api.html), not a downloadable spec.
+    Therefore zero specs were harvested verbatim (specs_count = 0).
+  homeMarket: United Kingdom
+  organization: Bennett Institute for Applied Data Science, University of Oxford
+  dataSource: English Prescribing Dataset — NHS Business Services Authority (NHS BSA) open data
+  developerPortal:
+    url: https://openprescribing.net/api/
+    liveStatusConfirmed: false
+    httpStatus: 403
+    statusNote: |
+      The live site sits behind a Cloudflare "challenge" mitigation (cf-mitigated:
+      challenge) that returns HTTP 403 to non-browser clients (curl and WebFetch
+      both received 403 with a Cloudflare interstitial). The page is genuinely
+      live and public for real browsers; it could not be programmatically
+      confirmed with a 200 during this review. The API surface was instead
+      confirmed against the authoritative public source repository.
+  fhir:
+    capabilityStatement: false
+    metadataEndpoint: none
+    smartConfiguration: false
+    fhirVersion: none
+    note: OpenPrescribing exposes no FHIR/HL7 surface; it is an open-data analytics REST API.
+  standardsConformance:
+    usCore: false
+    ukCore: false
+    auCore: false
+    daVinci: false
+    carin: false
+    note: |
+      Not a clinical interoperability platform. Data is coded with UK healthcare
+      classifications — BNF (British National Formulary) codes, dm+d (dictionary
+      of medicines and devices), and NHS organisation codes (practice, PCN,
+      Sub-ICB Location, ICB, Regional Team) — but no FHIR profile conformance applies.
+  machineReadableSpecs:
+    openapi: false
+    swagger: false
+    fhirConformance: false
+    count: 0
+    provenance: |
+      No OpenAPI/Swagger or FHIR CapabilityStatement is published by the provider.
+      Confirmed via GitHub code search over bennettoxford/openprescribing
+      (openapi: 0 hits, swagger: 0 hits). API routes documented below were read
+      verbatim from the repository's Django URLconf, not invented.
+  authModel:
+    scheme: none
+    registrationRequired: false
+    apiKey: false
+    oauth2: false
+    smartOnFhir: false
+    note: |
+      Anonymous public access. Per the official docs: "Currently no registration
+      is required, but please be aware this may change." No API key, token, or
+      OAuth is used.
+  access:
+    gated: false
+    selfServe: true
+    pricing: free
+  formats:
+    - JSON
+    - CSV
+    - GeoJSON
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://openprescribing.net/api/1.0
+      documented: true
+    - protocol: FHIR
+      documented: false
+      note: No FHIR REST surface exists.
+    - protocol: SMART-on-FHIR
+      documented: false
+      note: No .well-known/smart-configuration served.
+  endpointsConfirmedRest:
+    - GET https://openprescribing.net/api/1.0/spending/
+    - GET https://openprescribing.net/api/1.0/spending_by_org/
+    - GET https://openprescribing.net/api/1.0/spending_by_sicbl/
+    - GET https://openprescribing.net/api/1.0/spending_by_practice/
+    - GET https://openprescribing.net/api/1.0/bubble/
+    - GET https://openprescribing.net/api/1.0/tariff/
+    - GET https://openprescribing.net/api/1.0/price_per_unit/
+    - GET https://openprescribing.net/api/1.0/ghost_generics/
+    - GET https://openprescribing.net/api/1.0/measure/
+    - GET https://openprescribing.net/api/1.0/measure_by_regional_team/
+    - GET https://openprescribing.net/api/1.0/measure_by_icb/
+    - GET https://openprescribing.net/api/1.0/measure_by_sicbl/
+    - GET https://openprescribing.net/api/1.0/measure_by_pcn/
+    - GET https://openprescribing.net/api/1.0/measure_by_practice/
+    - GET https://openprescribing.net/api/1.0/measure_numerators_by_org/
+    - GET https://openprescribing.net/api/1.0/bnf_code/
+    - GET https://openprescribing.net/api/1.0/org_code/
+    - GET https://openprescribing.net/api/1.0/org_details/
+    - GET https://openprescribing.net/api/1.0/org_location/
+sources:
+  - url: https://openprescribing.net/api/
+    type: Documentation
+    note: Official API documentation page (HTML). Live but returns 403 to bots via Cloudflare challenge.
+  - url: https://github.com/bennettoxford/openprescribing/blob/main/openprescribing/api/urls.py
+    type: SourceCode
+    note: Authoritative Django URLconf — all /api/1.0/ routes read verbatim here.
+  - url: https://github.com/bennettoxford/openprescribing/blob/main/openprescribing/templates/api.html
+    type: Documentation
+    note: Source of the human-readable API docs; confirms JSON/CSV formats and "no registration required".
+  - url: https://www.bennett.ox.ac.uk/openprescribing/
+    type: About
+    note: Bennett Institute project page for OpenPrescribing.
+actions:
+  specsHarvested: 0
+  openapiDir: empty
+  reason: |
+    No OpenAPI/Swagger or FHIR CapabilityStatement exists to harvest verbatim.
+    Identity plus the real, source-confirmed public REST surface were captured.
