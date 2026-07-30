@@ -43,10 +43,11 @@ specificationVersion: '0.19'
 apis:
 - aid: openprescribing:openprescribing-spending-api
   name: OpenPrescribing Spending API
-  description: Retrieve total prescribing spending, quantity and items across the last five
-    years of the English Prescribing Dataset — by BNF code (section, chemical or presentation)
-    and by NHS organisation (practice, PCN, Sub-ICB Location, ICB, Regional Team), plus
-    drug-tariff, price-per-unit, ghost-generic and bubble-chart data. Returns JSON or CSV.
+  description: >-
+    Retrieve total prescribing spending, quantity and items across the last five years of the English
+    Prescribing Dataset — by BNF code (section, chemical or presentation) and by NHS organisation (practice,
+    PCN, Sub-ICB Location, ICB, Regional Team), plus drug-tariff, price-per-unit, ghost-generic and bubble-chart
+    data. Returns JSON or CSV.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
@@ -60,11 +61,11 @@ apis:
     url: https://openprescribing.net/api/
 - aid: openprescribing:openprescribing-measures-api
   name: OpenPrescribing Measures API
-  description: Standardised NHS prescribing-quality and safety measures (numerators,
-    denominators and calculated values) at national, Regional Team, ICB, Sub-ICB Location,
-    PCN and practice level. These endpoints power the OpenPrescribing measure dashboards
-    and are served under the public /api/1.0/ surface; they are not featured on the main
-    /api/ documentation page. Returns JSON or CSV.
+  description: >-
+    Standardised NHS prescribing-quality and safety measures (numerators, denominators and calculated
+    values) at national, Regional Team, ICB, Sub-ICB Location, PCN and practice level. These endpoints
+    power the OpenPrescribing measure dashboards and are served under the public /api/1.0/ surface; they
+    are not featured on the main /api/ documentation page. Returns JSON or CSV.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
@@ -78,10 +79,11 @@ apis:
     url: https://openprescribing.net/measure/
 - aid: openprescribing:openprescribing-information-api
   name: OpenPrescribing Information API
-  description: Reference-data lookups for the prescribing dataset — search BNF sections,
-    chemicals and presentations by name or code; look up NHS organisations (Sub-ICB Location
-    or practice) by code or name; retrieve list size and ASTRO-PU details; and fetch
-    Sub-ICB Location boundaries or approximate practice locations as GeoJSON.
+  description: >-
+    Reference-data lookups for the prescribing dataset — search BNF sections, chemicals and presentations
+    by name or code; look up NHS organisations (Sub-ICB Location or practice) by code or name; retrieve
+    list size and ASTRO-PU details; and fetch Sub-ICB Location boundaries or approximate practice locations
+    as GeoJSON.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
@@ -93,6 +95,14 @@ apis:
     url: https://openprescribing.net/api/
   - type: APIReference
     url: https://openprescribing.net/api/
+- aid: openprescribing:openprescribing-openapi
+  name: OpenPrescribing API
+  description: OpenPrescribing API from OpenPrescribing — 19 path(s) described in OpenAPI.
+  humanURL: https://openprescribing.net/api/
+  baseURL: https://openprescribing.net/api/1.0
+  properties:
+  - type: OpenAPI
+    url: openapi/openprescribing-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/openprescribing-agentic-access.yml
