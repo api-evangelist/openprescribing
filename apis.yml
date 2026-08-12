@@ -104,6 +104,9 @@ apis:
   - type: OpenAPI
     url: openapi/openprescribing-openapi.yml
 common:
+- type: License
+  name: MIT
+  url: https://github.com/bennettoxford/openprescribing/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/openprescribing-agentic-access.yml
 - type: DomainSecurity
