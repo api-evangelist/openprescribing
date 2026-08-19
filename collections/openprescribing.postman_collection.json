@@ -1,0 +1,3137 @@
+{
+  "item": [
+    {
+      "id": "20a13006-7e3a-4641-941c-3e5a222a6339",
+      "name": "Spending",
+      "description": {
+        "content": "Prescribing spending, quantity and item counts by BNF code and organisation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "044a3083-b783-4674-b965-af9881e3c2a3",
+          "name": "Total prescribing spending across all England",
+          "request": {
+            "name": "Total prescribing spending across all England",
+            "description": {
+              "content": "Total prescribing spending, quantity and items across the last five years of the English Prescribing Dataset for one or more BNF codes, aggregated across England.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spending",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d285429-7882-4576-b68f-33e22f45c5e4",
+              "name": "A list of monthly spending rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1964-01-15\",\n    \"actual_cost\": 39.944075301614475,\n    \"items\": 3681,\n    \"quantity\": 5970.3723482603455,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  },\n  {\n    \"date\": \"2022-08-04\",\n    \"actual_cost\": 3439.935952154591,\n    \"items\": 5094,\n    \"quantity\": 661.8709277970203,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8b9d40c-576a-4385-bcc4-14eadb54f9ef",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c6ddffa-02d3-4467-a00f-766ee46f3191",
+          "name": "Prescribing spending by organisation",
+          "request": {
+            "name": "Prescribing spending by organisation",
+            "description": {
+              "content": "Prescribing spending, quantity and items by BNF code, broken down by NHS organisation of the requested org_type (practice, pcn, ccg / sicbl, stp / icb, regional_team).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spending_by_org",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_type",
+                  "value": "<string>",
+                  "description": "NHS organisation type to break results down by."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fe513cd-57e2-4d87-98d6-41f7001c6ec2",
+              "name": "A list of monthly spending rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_org",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2014-01-22\",\n    \"actual_cost\": 5870.177645959147,\n    \"items\": 349,\n    \"quantity\": 8918.45724072685,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  },\n  {\n    \"date\": \"1965-10-10\",\n    \"actual_cost\": 8050.376284309855,\n    \"items\": 5155,\n    \"quantity\": 8750.502371451665,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2183b389-e3f2-40a5-9583-c791690d46f2",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_org",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c88b78e-243d-4348-a256-f4919b4a440e",
+              "name": "Date outside the available data window, or resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_org",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c08ef556-c00c-4348-a3ef-5d6c79150827",
+          "name": "Prescribing spending by Sub-ICB Location (CCG)",
+          "request": {
+            "name": "Prescribing spending by Sub-ICB Location (CCG)",
+            "description": {
+              "content": "Prescribing spending by BNF code broken down by Sub-ICB Location (formerly CCG).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spending_by_sicbl",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2feeb925-ecdb-4c9f-829d-b417fa2cd247",
+              "name": "A list of monthly spending rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_sicbl",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2014-01-22\",\n    \"actual_cost\": 5870.177645959147,\n    \"items\": 349,\n    \"quantity\": 8918.45724072685,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  },\n  {\n    \"date\": \"1965-10-10\",\n    \"actual_cost\": 8050.376284309855,\n    \"items\": 5155,\n    \"quantity\": 8750.502371451665,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c893a757-53be-40a4-a6fa-35d5827030bd",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_sicbl",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f3fcd87-15ef-4d73-a76f-02a6ec0a21a8",
+          "name": "Prescribing spending by GP practice",
+          "request": {
+            "name": "Prescribing spending by GP practice",
+            "description": {
+              "content": "Prescribing spending by BNF code broken down by GP practice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spending_by_practice",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b596b3a-2f7b-483e-924d-5ae18205a3b4",
+              "name": "A list of monthly spending rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_practice",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2014-01-22\",\n    \"actual_cost\": 5870.177645959147,\n    \"items\": 349,\n    \"quantity\": 8918.45724072685,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  },\n  {\n    \"date\": \"1965-10-10\",\n    \"actual_cost\": 8050.376284309855,\n    \"items\": 5155,\n    \"quantity\": 8750.502371451665,\n    \"row_id\": \"string\",\n    \"row_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5d7be2b-114e-4116-a76f-6d78e8e9a0b2",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spending_by_practice",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eaa6089f-63e7-43a6-ba72-b0f0feebc900",
+      "name": "Measures",
+      "description": {
+        "content": "Standardised NHS prescribing-quality and safety measures.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "627ff641-35d1-4d77-8da9-b0e6567165fc",
+          "name": "Global (all-England) measure values",
+          "request": {
+            "name": "Global (all-England) measure values",
+            "description": {
+              "content": "National (all-England) values for one or more standardised prescribing measures.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measure",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb67b71e-87cc-45bd-b6cb-e05213d3efb5",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2024-05-05\",\n    \"numerator\": 6300.184325065472,\n    \"denominator\": 6519.050378075312,\n    \"calc_value\": 8610.228547385583,\n    \"percentile\": 1031.8202449831538\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1947-03-11\",\n    \"numerator\": 3960.5782186591655,\n    \"denominator\": 1487.356085785614,\n    \"calc_value\": 1439.559460727845,\n    \"percentile\": 9736.436284605556\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b623385d-2b06-4090-9847-539587c2df31",
+          "name": "Measure values by Regional Team",
+          "request": {
+            "name": "Measure values by Regional Team",
+            "description": {},
+            "url": {
+              "path": [
+                "measure_by_regional_team",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_org_type",
+                  "value": "<string>",
+                  "description": "Parent organisation type to scope the query to."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate values across all organisations of the requested type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30d1db7f-9dc8-4107-a391-57b10a7deb16",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_regional_team",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2014-09-15\",\n    \"numerator\": 5474.947557391758,\n    \"denominator\": 8643.708561969985,\n    \"calc_value\": 5336.92784316347,\n    \"percentile\": 7708.927931846742\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1949-02-07\",\n    \"numerator\": 3405.007413035359,\n    \"denominator\": 1037.1045506627108,\n    \"calc_value\": 863.9517214395231,\n    \"percentile\": 9649.655412389693\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04a910db-3d7a-49d1-a29b-f24d9c9358fd",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_regional_team",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7429daa-f7e4-42bc-80da-1b4c25a38343",
+          "name": "Measure values by ICB (STP)",
+          "request": {
+            "name": "Measure values by ICB (STP)",
+            "description": {},
+            "url": {
+              "path": [
+                "measure_by_icb",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_org_type",
+                  "value": "<string>",
+                  "description": "Parent organisation type to scope the query to."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate values across all organisations of the requested type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a972f270-1212-431d-9a28-2f60bba6c2c0",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_icb",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2014-09-15\",\n    \"numerator\": 5474.947557391758,\n    \"denominator\": 8643.708561969985,\n    \"calc_value\": 5336.92784316347,\n    \"percentile\": 7708.927931846742\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1949-02-07\",\n    \"numerator\": 3405.007413035359,\n    \"denominator\": 1037.1045506627108,\n    \"calc_value\": 863.9517214395231,\n    \"percentile\": 9649.655412389693\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2f0282f-88f2-462c-88b2-56e6211d5139",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_icb",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f25dc906-6217-4552-8d6a-efe3ece4bbcc",
+          "name": "Measure values by Sub-ICB Location (CCG)",
+          "request": {
+            "name": "Measure values by Sub-ICB Location (CCG)",
+            "description": {},
+            "url": {
+              "path": [
+                "measure_by_sicbl",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_org_type",
+                  "value": "<string>",
+                  "description": "Parent organisation type to scope the query to."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate values across all organisations of the requested type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eb17e52-5d40-4858-933d-a57b2c687d3c",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_sicbl",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2014-09-15\",\n    \"numerator\": 5474.947557391758,\n    \"denominator\": 8643.708561969985,\n    \"calc_value\": 5336.92784316347,\n    \"percentile\": 7708.927931846742\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1949-02-07\",\n    \"numerator\": 3405.007413035359,\n    \"denominator\": 1037.1045506627108,\n    \"calc_value\": 863.9517214395231,\n    \"percentile\": 9649.655412389693\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa4856e2-41e8-4b94-998f-2887e1d42525",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_sicbl",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59e32863-c0b3-4ede-a8a2-5536b17804c3",
+          "name": "Measure values by Primary Care Network (PCN)",
+          "request": {
+            "name": "Measure values by Primary Care Network (PCN)",
+            "description": {},
+            "url": {
+              "path": [
+                "measure_by_pcn",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_org_type",
+                  "value": "<string>",
+                  "description": "Parent organisation type to scope the query to."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate values across all organisations of the requested type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "916d15f5-6d05-427a-b32b-5713bf42f272",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_pcn",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2014-09-15\",\n    \"numerator\": 5474.947557391758,\n    \"denominator\": 8643.708561969985,\n    \"calc_value\": 5336.92784316347,\n    \"percentile\": 7708.927931846742\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1949-02-07\",\n    \"numerator\": 3405.007413035359,\n    \"denominator\": 1037.1045506627108,\n    \"calc_value\": 863.9517214395231,\n    \"percentile\": 9649.655412389693\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0260ff2-3505-4900-b0d1-0944b1a48db5",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_pcn",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c5f47b7-cc89-45d0-959f-cba46ab0ea6b",
+          "name": "Measure values by GP practice",
+          "request": {
+            "name": "Measure values by GP practice",
+            "description": {},
+            "url": {
+              "path": [
+                "measure_by_practice",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated list of measure tags to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of NHS organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_org_type",
+                  "value": "<string>",
+                  "description": "Parent organisation type to scope the query to."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate values across all organisations of the requested type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38c64c44-7670-42a6-94aa-fd706ceb8240",
+              "name": "A list of measure values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_practice",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"2014-09-15\",\n    \"numerator\": 5474.947557391758,\n    \"denominator\": 8643.708561969985,\n    \"calc_value\": 5336.92784316347,\n    \"percentile\": 7708.927931846742\n  },\n  {\n    \"measure\": \"string\",\n    \"org_type\": \"string\",\n    \"org_id\": \"string\",\n    \"org_name\": \"string\",\n    \"date\": \"1949-02-07\",\n    \"numerator\": 3405.007413035359,\n    \"denominator\": 1037.1045506627108,\n    \"calc_value\": 863.9517214395231,\n    \"percentile\": 9649.655412389693\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dec1d4b3-cd4d-464d-89f9-3938adfc6bcd",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_by_practice",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parent_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da9753bc-d420-4af4-8d27-6f0b3995d037",
+          "name": "Measure numerator breakdown by organisation",
+          "request": {
+            "name": "Measure numerator breakdown by organisation",
+            "description": {
+              "content": "The individual presentations that make up a measure's numerator, broken down for a given organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measure_numerators_by_org",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "measure",
+                  "value": "<string>",
+                  "description": "(Required) Single measure id."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_type",
+                  "value": "<string>",
+                  "description": "Organisation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Organisation code."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25de4c7e-2a7b-463d-a52a-206fa79fcb37",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_numerators_by_org",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a48cab32-743e-40a0-8cc8-5a4d620a7adc",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measure_numerators_by_org",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "measure",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ed45f235-6477-4581-b54c-7c87cf1c99b8",
+      "name": "Tariff",
+      "description": {
+        "content": "Drug-tariff prices and price-per-unit / ghost-generic savings data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f69533e8-86de-4aee-a79e-890b95f8a53d",
+          "name": "Price-per-unit bubble-chart data",
+          "request": {
+            "name": "Price-per-unit bubble-chart data",
+            "description": {
+              "content": "Price-per-unit data for a single BNF presentation in a shape suitable for a Highcharts bubble chart, optionally highlighting/focusing a single organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bubble",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bnf_code",
+                  "value": "<string>",
+                  "description": "(Required) BNF presentation code."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "(Required) Month (YYYY-MM-DD, first of month) within the available 5-year window."
+                },
+                {
+                  "disabled": false,
+                  "key": "highlight",
+                  "value": "<string>",
+                  "description": "Organisation code to highlight (practice or CCG/Sub-ICB Location)."
+                },
+                {
+                  "disabled": false,
+                  "key": "focus",
+                  "value": "<string>",
+                  "description": "When set together with highlight, restricts the chart to the highlighted org."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fea26d92-e885-4977-b72c-19cf1246fd48",
+              "name": "Bubble-chart series and categories.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bubble",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bnf_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "highlight",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "focus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"plotline\": 6026.354594983204\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64db3dad-6231-4ebd-8a32-ee50fefd2cef",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bubble",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bnf_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "highlight",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "focus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25532239-f48b-4e8a-903f-136b32bf22ce",
+          "name": "Drug-tariff prices",
+          "request": {
+            "name": "Drug-tariff prices",
+            "description": {
+              "content": "Drug-tariff prices (including NCSO price-concession data) for one or more BNF codes. Requesting no codes returns the entire (large) tariff and is cached.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tariff",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "codes",
+                  "value": "<string>",
+                  "description": "Comma-separated list of BNF codes. Omit to return the whole drug tariff."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18e6d402-5042-47f0-a970-78865d611386",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tariff",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b839a84-c3ce-44cb-9d37-3c8741d85311",
+          "name": "Price-per-unit savings",
+          "request": {
+            "name": "Price-per-unit savings",
+            "description": {
+              "content": "Price-per-unit data and potential savings for presentations across practices or Sub-ICB Locations for a given month.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "price_per_unit",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "(Required) Month (YYYY-MM-DD, first of month)."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_code",
+                  "value": "<string>",
+                  "description": "Organisation code (practice or CCG/Sub-ICB Location)."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_type",
+                  "value": "<string>",
+                  "description": "Organisation type; inferred from entity_code length when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "child_org_type",
+                  "value": "<string>",
+                  "description": "Child organisation type to break results down to (e.g. practice)."
+                },
+                {
+                  "disabled": false,
+                  "key": "bnf_code",
+                  "value": "<string>",
+                  "description": "Restrict to a single BNF code."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregate",
+                  "value": "<boolean>",
+                  "description": "Aggregate across all of England."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0361fcd-04a5-4427-ba7a-8988c5bbb303",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "price_per_unit",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "entity_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "child_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bnf_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f45c705f-c187-4cdd-b9f0-c13d8c128b3d",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "price_per_unit",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "entity_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "child_org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bnf_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3020979-efe6-4b7b-9aa0-96ff5ae24305",
+          "name": "Ghost-generic savings",
+          "request": {
+            "name": "Ghost-generic savings",
+            "description": {
+              "content": "Potential savings from \"ghost-branded generic\" prescribing, comparing the price paid against the national median price, for a given month and organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ghost_generics",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "(Required) Month (YYYY-MM-DD, first of month)."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_code",
+                  "value": "<string>",
+                  "description": "Organisation code."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_type",
+                  "value": "<string>",
+                  "description": "(Required) Organisation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_by",
+                  "value": "practice",
+                  "description": "Aggregation level for the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d70703f9-0624-426f-b129-a8293c8870bb",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ghost_generics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "entity_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "practice"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b075621d-eb11-4c58-8afb-a496980a2d98",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ghost_generics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "entity_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "practice"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c77f7770-5ebf-4f64-b948-b4ebd80379f5",
+      "name": "Reference",
+      "description": {
+        "content": "BNF code, organisation code and organisation-location reference lookups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e83eec13-57c2-43b5-b4cd-ca7846720e1c",
+          "name": "Organisation statistics (list size, ASTRO-PU, STAR-PU)",
+          "request": {
+            "name": "Organisation statistics (list size, ASTRO-PU, STAR-PU)",
+            "description": {
+              "content": "Practice-level statistics such as total list size, ASTRO-PU and STAR-PU values for one or more organisations, optionally restricted to a set of keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org_details",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_type",
+                  "value": "<string>",
+                  "description": "Organisation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "Comma-separated list of statistic keys to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Comma-separated list of organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b39a8415-033d-4769-8b33-0237ac055200",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org_details",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b921a92c-67b2-40b5-9a04-38d47e22211c",
+              "name": "Invalid request (bad/missing parameter, unrecognised org type, invalid code).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org_details",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9434cf79-e721-4655-845b-2082fab71483",
+          "name": "Search BNF sections, chemicals and presentations",
+          "request": {
+            "name": "Search BNF sections, chemicals and presentations",
+            "description": {
+              "content": "Search the BNF hierarchy (chapters, sections, paragraphs, chemicals, products and presentations) by name or code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bnf_code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term(s); comma-separated for multiple codes/names."
+                },
+                {
+                  "disabled": false,
+                  "key": "exact",
+                  "value": "<string>",
+                  "description": "When \"true\", match codes/names exactly instead of prefix/substring."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "015b7f23-c419-4c11-865f-505c93e67097",
+              "name": "A list of matching BNF hierarchy entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bnf_code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exact",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"is_generic\": true,\n    \"section\": \"string\"\n  },\n  {\n    \"type\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"is_generic\": true,\n    \"section\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62f14829-ac56-4970-8ad4-7b1871b95575",
+          "name": "Look up NHS organisations by code or name",
+          "request": {
+            "name": "Look up NHS organisations by code or name",
+            "description": {
+              "content": "Look up NHS organisations (practice, PCN, Sub-ICB Location, ICB, Regional Team) by code or name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org_code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Organisation code or name to search for."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_type",
+                  "value": "<string>",
+                  "description": "Restrict the search to a single organisation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93258415-18da-4d0b-b7ec-3939f20cb3d4",
+              "name": "A list of result objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org_code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcf24c1d-df2d-4803-b695-0f3907c913a1",
+          "name": "Organisation boundaries and locations (GeoJSON)",
+          "request": {
+            "name": "Organisation boundaries and locations (GeoJSON)",
+            "description": {
+              "content": "Sub-ICB Location / ICB / PCN / Regional Team boundaries, or approximate practice point locations, returned as a GeoJSON FeatureCollection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org_location",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_type",
+                  "value": "practice",
+                  "description": "Organisation type."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Comma-separated organisation codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "centroids",
+                  "value": "<string>",
+                  "description": "When set, return boundary centroids instead of full polygons."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a3590d8-3437-4159-9fb0-dec00f814199",
+              "name": "GeoJSON FeatureCollection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org_location",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_type",
+                      "value": "practice"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "centroids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://openprescribing.net/api/1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71f36cc5-58fd-4f86-9b99-8b3f01e114db",
+    "name": "OpenPrescribing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenPrescribing.net exposes NHS England primary-care (GP) prescribing data as a free, public, RESTful API. It is built and operated by the Bennett Institute for Applied Data Science at the University of Oxford on top of the English Prescribing Dataset published monthly by the NHS Business Services Authority. The API returns prescribing spending, quantity and item counts by BNF code and by NHS organisation (practice, PCN, Sub-ICB Location / CCG, ICB / STP, Regional Team), standardised prescribing-quality measures, drug-tariff and price-per-unit data, ghost-generic savings, and organisation reference and boundary lookups. Responses are JSON or CSV; organisation-location endpoints return GeoJSON. No registration, API key or OAuth is required. This specification was generated by API Evangelist by reading the public, MIT-licensed Django source (openprescribing/api/urls.py and the api/views_*.py modules); it is not a provider-published spec.\n\nContact Support:\n Name: Bennett Institute for Applied Data Science",
+      "type": "text/plain"
+    }
+  }
+}

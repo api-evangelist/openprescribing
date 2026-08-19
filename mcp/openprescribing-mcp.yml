@@ -2,69 +2,74 @@ generated: '2026-07-24'
 method: derived
 status: candidate
 source: openapi/openprescribing-openapi.yml
-note: >-
-  No official hosted MCP server exists for OpenPrescribing. This is a candidate tool list
-  derived one-to-one from the OpenAPI operations, suitable for wrapping the public key-less
-  API in an MCP server. All tools are read-only.
+note: No official hosted MCP server exists for OpenPrescribing. This is a candidate tool list derived
+  one-to-one from the OpenAPI operations, suitable for wrapping the public key-less API in an MCP server.
+  All tools are read-only.
 server:
   name: openprescribing
   transport: http
   url: null
 tools:
-  - name: get_spending
-    description: Total prescribing spending, quantity and items across England for BNF codes.
-    source_operation: openapi/openprescribing-openapi.yml#getSpending
-  - name: get_spending_by_org
-    description: Prescribing spending broken down by NHS organisation.
-    source_operation: openapi/openprescribing-openapi.yml#getSpendingByOrg
-  - name: get_spending_by_sicbl
-    description: Prescribing spending by Sub-ICB Location (CCG).
-    source_operation: openapi/openprescribing-openapi.yml#getSpendingBySicbl
-  - name: get_spending_by_practice
-    description: Prescribing spending by GP practice.
-    source_operation: openapi/openprescribing-openapi.yml#getSpendingByPractice
-  - name: get_bubble
-    description: Price-per-unit bubble-chart data for a BNF presentation.
-    source_operation: openapi/openprescribing-openapi.yml#getBubble
-  - name: get_tariff
-    description: Drug-tariff prices for BNF codes.
-    source_operation: openapi/openprescribing-openapi.yml#getTariff
-  - name: get_price_per_unit
-    description: Price-per-unit savings for presentations across practices/CCGs.
-    source_operation: openapi/openprescribing-openapi.yml#getPricePerUnit
-  - name: get_ghost_generics
-    description: Ghost-generic potential savings for an organisation and month.
-    source_operation: openapi/openprescribing-openapi.yml#getGhostGenerics
-  - name: get_measures
-    description: National (all-England) standardised prescribing measure values.
-    source_operation: openapi/openprescribing-openapi.yml#getMeasures
-  - name: get_measure_by_regional_team
-    description: Measure values by Regional Team.
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureByRegionalTeam
-  - name: get_measure_by_icb
-    description: Measure values by ICB (STP).
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureByIcb
-  - name: get_measure_by_sicbl
-    description: Measure values by Sub-ICB Location (CCG).
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureBySicbl
-  - name: get_measure_by_pcn
-    description: Measure values by Primary Care Network (PCN).
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureByPcn
-  - name: get_measure_by_practice
-    description: Measure values by GP practice.
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureByPractice
-  - name: get_measure_numerators_by_org
-    description: Numerator breakdown for a measure at one organisation.
-    source_operation: openapi/openprescribing-openapi.yml#getMeasureNumeratorsByOrg
-  - name: get_org_details
-    description: Organisation statistics (list size, ASTRO-PU, STAR-PU).
-    source_operation: openapi/openprescribing-openapi.yml#getOrgDetails
-  - name: search_bnf_codes
-    description: Search BNF sections, chemicals and presentations by name or code.
-    source_operation: openapi/openprescribing-openapi.yml#getBnfCodes
-  - name: search_org_codes
-    description: Look up NHS organisations by code or name.
-    source_operation: openapi/openprescribing-openapi.yml#getOrgCodes
-  - name: get_org_location
-    description: Organisation boundaries/locations as GeoJSON.
-    source_operation: openapi/openprescribing-openapi.yml#getOrgLocation
+- name: get_spending
+  description: Total prescribing spending, quantity and items across England for BNF codes.
+  source_operation: openapi/openprescribing-openapi.yml#getSpending
+- name: get_spending_by_org
+  description: Prescribing spending broken down by NHS organisation.
+  source_operation: openapi/openprescribing-openapi.yml#getSpendingByOrg
+- name: get_spending_by_sicbl
+  description: Prescribing spending by Sub-ICB Location (CCG).
+  source_operation: openapi/openprescribing-openapi.yml#getSpendingBySicbl
+- name: get_spending_by_practice
+  description: Prescribing spending by GP practice.
+  source_operation: openapi/openprescribing-openapi.yml#getSpendingByPractice
+- name: get_bubble
+  description: Price-per-unit bubble-chart data for a BNF presentation.
+  source_operation: openapi/openprescribing-openapi.yml#getBubble
+- name: get_tariff
+  description: Drug-tariff prices for BNF codes.
+  source_operation: openapi/openprescribing-openapi.yml#getTariff
+- name: get_price_per_unit
+  description: Price-per-unit savings for presentations across practices/CCGs.
+  source_operation: openapi/openprescribing-openapi.yml#getPricePerUnit
+- name: get_ghost_generics
+  description: Ghost-generic potential savings for an organisation and month.
+  source_operation: openapi/openprescribing-openapi.yml#getGhostGenerics
+- name: get_measures
+  description: National (all-England) standardised prescribing measure values.
+  source_operation: openapi/openprescribing-openapi.yml#getMeasures
+- name: get_measure_by_regional_team
+  description: Measure values by Regional Team.
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureByRegionalTeam
+- name: get_measure_by_icb
+  description: Measure values by ICB (STP).
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureByIcb
+- name: get_measure_by_sicbl
+  description: Measure values by Sub-ICB Location (CCG).
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureBySicbl
+- name: get_measure_by_pcn
+  description: Measure values by Primary Care Network (PCN).
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureByPcn
+- name: get_measure_by_practice
+  description: Measure values by GP practice.
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureByPractice
+- name: get_measure_numerators_by_org
+  description: Numerator breakdown for a measure at one organisation.
+  source_operation: openapi/openprescribing-openapi.yml#getMeasureNumeratorsByOrg
+- name: get_org_details
+  description: Organisation statistics (list size, ASTRO-PU, STAR-PU).
+  source_operation: openapi/openprescribing-openapi.yml#getOrgDetails
+- name: search_bnf_codes
+  description: Search BNF sections, chemicals and presentations by name or code.
+  source_operation: openapi/openprescribing-openapi.yml#getBnfCodes
+- name: search_org_codes
+  description: Look up NHS organisations by code or name.
+  source_operation: openapi/openprescribing-openapi.yml#getOrgCodes
+- name: get_org_location
+  description: Organisation boundaries/locations as GeoJSON.
+  source_operation: openapi/openprescribing-openapi.yml#getOrgLocation
+deployment:
+  mode: none
+  verified: derived
+  tools: 19
+  checked: '2026-08-12'
+  source: catalog MCP census

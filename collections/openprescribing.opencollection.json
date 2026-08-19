@@ -1,0 +1,787 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenPrescribing API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Total prescribing spending across all England",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/spending/",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Total prescribing spending, quantity and items across the last five years of the English Prescribing Dataset for one or more BNF codes, aggregated across England."
+        },
+        {
+          "info": {
+            "name": "Prescribing spending by organisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/spending_by_org/",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "org_type",
+                "value": "",
+                "type": "query",
+                "description": "NHS organisation type to break results down by."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Prescribing spending, quantity and items by BNF code, broken down by NHS organisation of the requested org_type (practice, pcn, ccg / sicbl, stp / icb, regional_team)."
+        },
+        {
+          "info": {
+            "name": "Prescribing spending by Sub-ICB Location (CCG)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/spending_by_sicbl/",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Prescribing spending by BNF code broken down by Sub-ICB Location (formerly CCG)."
+        },
+        {
+          "info": {
+            "name": "Prescribing spending by GP practice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/spending_by_practice/",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of BNF code prefixes (section, chemical or presentation)."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Prescribing spending by BNF code broken down by GP practice."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tariff",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Price-per-unit bubble-chart data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/bubble/",
+            "params": [
+              {
+                "name": "bnf_code",
+                "value": "",
+                "type": "query",
+                "description": "BNF presentation code."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month) within the available 5-year window."
+              },
+              {
+                "name": "highlight",
+                "value": "",
+                "type": "query",
+                "description": "Organisation code to highlight (practice or CCG/Sub-ICB Location)."
+              },
+              {
+                "name": "focus",
+                "value": "",
+                "type": "query",
+                "description": "When set together with highlight, restricts the chart to the highlighted org."
+              }
+            ]
+          },
+          "docs": "Price-per-unit data for a single BNF presentation in a shape suitable for a Highcharts bubble chart, optionally highlighting/focusing a single organisation."
+        },
+        {
+          "info": {
+            "name": "Drug-tariff prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/tariff/",
+            "params": [
+              {
+                "name": "codes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of BNF codes. Omit to return the whole drug tariff."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Drug-tariff prices (including NCSO price-concession data) for one or more BNF codes. Requesting no codes returns the entire (large) tariff and is cached."
+        },
+        {
+          "info": {
+            "name": "Price-per-unit savings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/price_per_unit/",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month)."
+              },
+              {
+                "name": "entity_code",
+                "value": "",
+                "type": "query",
+                "description": "Organisation code (practice or CCG/Sub-ICB Location)."
+              },
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "query",
+                "description": "Organisation type; inferred from entity_code length when omitted."
+              },
+              {
+                "name": "child_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Child organisation type to break results down to (e.g. practice)."
+              },
+              {
+                "name": "bnf_code",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to a single BNF code."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate across all of England."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Price-per-unit data and potential savings for presentations across practices or Sub-ICB Locations for a given month."
+        },
+        {
+          "info": {
+            "name": "Ghost-generic savings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/ghost_generics/",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Month (YYYY-MM-DD, first of month)."
+              },
+              {
+                "name": "entity_code",
+                "value": "",
+                "type": "query",
+                "description": "Organisation code."
+              },
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "query",
+                "description": "Organisation type."
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query",
+                "description": "Aggregation level for the results."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Potential savings from \"ghost-branded generic\" prescribing, comparing the price paid against the national median price, for a given month and organisation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Measures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Global (all-England) measure values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "National (all-England) values for one or more standardised prescribing measures."
+        },
+        {
+          "info": {
+            "name": "Measure values by Regional Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_by_regional_team/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "parent_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Parent organisation type to scope the query to."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate values across all organisations of the requested type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Measure values by Regional Team"
+        },
+        {
+          "info": {
+            "name": "Measure values by ICB (STP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_by_icb/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "parent_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Parent organisation type to scope the query to."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate values across all organisations of the requested type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Measure values by ICB (STP)"
+        },
+        {
+          "info": {
+            "name": "Measure values by Sub-ICB Location (CCG)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_by_sicbl/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "parent_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Parent organisation type to scope the query to."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate values across all organisations of the requested type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Measure values by Sub-ICB Location (CCG)"
+        },
+        {
+          "info": {
+            "name": "Measure values by Primary Care Network (PCN)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_by_pcn/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "parent_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Parent organisation type to scope the query to."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate values across all organisations of the requested type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Measure values by Primary Care Network (PCN)"
+        },
+        {
+          "info": {
+            "name": "Measure values by GP practice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_by_practice/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure ids."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of measure tags to filter by."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of NHS organisation codes."
+              },
+              {
+                "name": "parent_org_type",
+                "value": "",
+                "type": "query",
+                "description": "Parent organisation type to scope the query to."
+              },
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "query",
+                "description": "Aggregate values across all organisations of the requested type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Measure values by GP practice"
+        },
+        {
+          "info": {
+            "name": "Measure numerator breakdown by organisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/measure_numerators_by_org/",
+            "params": [
+              {
+                "name": "measure",
+                "value": "",
+                "type": "query",
+                "description": "Single measure id."
+              },
+              {
+                "name": "org_type",
+                "value": "",
+                "type": "query",
+                "description": "Organisation type."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Organisation code."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "The individual presentations that make up a measure's numerator, broken down for a given organisation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organisation statistics (list size, ASTRO-PU, STAR-PU)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/org_details/",
+            "params": [
+              {
+                "name": "org_type",
+                "value": "",
+                "type": "query",
+                "description": "Organisation type."
+              },
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of statistic keys to return."
+              },
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of organisation codes."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Practice-level statistics such as total list size, ASTRO-PU and STAR-PU values for one or more organisations, optionally restricted to a set of keys."
+        },
+        {
+          "info": {
+            "name": "Search BNF sections, chemicals and presentations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/bnf_code/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term(s); comma-separated for multiple codes/names."
+              },
+              {
+                "name": "exact",
+                "value": "",
+                "type": "query",
+                "description": "When \"true\", match codes/names exactly instead of prefix/substring."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Search the BNF hierarchy (chapters, sections, paragraphs, chemicals, products and presentations) by name or code."
+        },
+        {
+          "info": {
+            "name": "Look up NHS organisations by code or name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/org_code/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Organisation code or name to search for."
+              },
+              {
+                "name": "org_type",
+                "value": "",
+                "type": "query",
+                "description": "Restrict the search to a single organisation type."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns."
+              }
+            ]
+          },
+          "docs": "Look up NHS organisations (practice, PCN, Sub-ICB Location, ICB, Regional Team) by code or name."
+        },
+        {
+          "info": {
+            "name": "Organisation boundaries and locations (GeoJSON)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openprescribing.net/api/1.0/org_location/",
+            "params": [
+              {
+                "name": "org_type",
+                "value": "",
+                "type": "query",
+                "description": "Organisation type."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated organisation codes."
+              },
+              {
+                "name": "centroids",
+                "value": "",
+                "type": "query",
+                "description": "When set, return boundary centroids instead of full polygons."
+              }
+            ]
+          },
+          "docs": "Sub-ICB Location / ICB / PCN / Regional Team boundaries, or approximate practice point locations, returned as a GeoJSON FeatureCollection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
