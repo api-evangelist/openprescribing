@@ -95,14 +95,46 @@ apis:
     url: https://openprescribing.net/api/
   - type: APIReference
     url: https://openprescribing.net/api/
-- aid: openprescribing:openprescribing-openapi
-  name: OpenPrescribing API
-  description: OpenPrescribing API from OpenPrescribing — 19 path(s) described in OpenAPI.
+- aid: openprescribing:openprescribing-measures-api
+  name: OpenPrescribing Measures API
+  description: Standardised NHS prescribing-quality and safety measures.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
+  tags:
+  - Measures
   properties:
   - type: OpenAPI
-    url: openapi/openprescribing-openapi.yml
+    url: openapi/openprescribing-measures-api-openapi.yml
+- aid: openprescribing:openprescribing-reference-api
+  name: OpenPrescribing Reference API
+  description: BNF code, organisation code and organisation-location reference lookups.
+  humanURL: https://openprescribing.net/api/
+  baseURL: https://openprescribing.net/api/1.0
+  tags:
+  - Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/openprescribing-reference-api-openapi.yml
+- aid: openprescribing:openprescribing-spending-api
+  name: OpenPrescribing Spending API
+  description: Prescribing spending, quantity and item counts by BNF code and organisation.
+  humanURL: https://openprescribing.net/api/
+  baseURL: https://openprescribing.net/api/1.0
+  tags:
+  - Spending
+  properties:
+  - type: OpenAPI
+    url: openapi/openprescribing-spending-api-openapi.yml
+- aid: openprescribing:openprescribing-tariff-api
+  name: OpenPrescribing Tariff API
+  description: Drug-tariff prices and price-per-unit / ghost-generic savings data.
+  humanURL: https://openprescribing.net/api/
+  baseURL: https://openprescribing.net/api/1.0
+  tags:
+  - Tariff
+  properties:
+  - type: OpenAPI
+    url: openapi/openprescribing-tariff-api-openapi.yml
 common:
 - type: License
   name: MIT
