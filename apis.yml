@@ -14,6 +14,19 @@ description: >-
   United Kingdom (England prescribing data). It is an independent academic analytics
   platform layered on NHS open data, not an NHS FHIR clinical system; there is no OAuth,
   no SMART-on-FHIR, and currently no registration or API key is required.
+deliveryModel:
+  model: self-hosted
+  license: MIT
+  open_source: true
+  commercial: false
+  callable_host: true
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: none
@@ -136,6 +149,10 @@ apis:
   - type: OpenAPI
     url: openapi/openprescribing-tariff-api-openapi.yml
 common:
+- type: IssueTracker
+  url: https://github.com/bennettoxford/openprescribing/issues
+- type: ContributionGuide
+  url: https://github.com/bennettoxford/openprescribing/blob/main/CONTRIBUTING.md
 - type: License
   name: MIT
   url: https://github.com/bennettoxford/openprescribing/blob/main/LICENSE
