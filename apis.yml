@@ -139,6 +139,8 @@ apis:
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
+  - Tariffs
+  tags_raw:
   - Tariff
   properties:
   - type: OpenAPI
