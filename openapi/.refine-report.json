@@ -1,0 +1,26 @@
+{
+  "provider": "openprescribing",
+  "sources": [
+    "_original/openprescribing-openapi.yml"
+  ],
+  "outputs": [
+    "openprescribing-measures-api-openapi.yml",
+    "openprescribing-reference-api-openapi.yml",
+    "openprescribing-spending-api-openapi.yml",
+    "openprescribing-tariff-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openprescribing-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "openprescribing-measures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openprescribing-reference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openprescribing-spending-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openprescribing-tariff-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

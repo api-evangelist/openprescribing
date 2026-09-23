@@ -1,13 +1,14 @@
 generated: '2026-07-24'
 method: searched
 host: https://openprescribing.net
-note: >-
-  All probes to openprescribing.net (including / and /api/) return HTTP 403 to automated
-  clients — the site is behind Cloudflare with bot protection that blocks non-browser user
-  agents. The 403s below are therefore inconclusive (WAF-blocked), not confirmed absent. No
-  .well-known document could be retrieved anonymously. The API itself requires no OAuth/OIDC,
-  so oauth/openid discovery documents are not expected to exist.
-documents:
+note: All probes to openprescribing.net (including / and /api/) return HTTP 403 to automated clients —
+  the site is behind Cloudflare with bot protection that blocks non-browser user agents. The 403s below
+  are therefore inconclusive (WAF-blocked), not confirmed absent. No .well-known document could be retrieved
+  anonymously. The API itself requires no OAuth/OIDC, so oauth/openid discovery documents are not expected
+  to exist.
+hosts:
+- host: https://openprescribing.net
+  documents:
   - path: /.well-known/security.txt
     status: 403
     note: WAF-blocked (inconclusive)
@@ -26,3 +27,8 @@ documents:
   - path: /.well-known/ai-plugin.json
     status: 403
     note: WAF-blocked
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
