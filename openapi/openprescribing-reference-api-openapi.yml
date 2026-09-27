@@ -149,12 +149,6 @@ components:
         text/csv:
           schema:
             type: string
-    BadRequest:
-      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BnfCodeList:
       description: A list of matching BNF hierarchy entries.
       content:
@@ -163,18 +157,19 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/BnfCode'
-  parameters:
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+    BadRequest:
+      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: Django REST Framework error envelope.
+      properties:
+        detail:
+          type: string
     BnfCode:
       type: object
       properties:
@@ -189,9 +184,14 @@ components:
           type: boolean
         section:
           type: string
-    Error:
-      type: object
-      description: Django REST Framework error envelope.
-      properties:
-        detail:
-          type: string
+  parameters:
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.

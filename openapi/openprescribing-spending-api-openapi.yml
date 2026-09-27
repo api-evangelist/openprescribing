@@ -88,16 +88,19 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   parameters:
-    format:
-      name: format
+    date:
+      name: date
       in: query
       schema:
         type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+        format: date
+      description: Month (YYYY-MM-DD, first of month) within the available 5-year window.
+    code:
+      name: code
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of BNF code prefixes (section, chemical or presentation).
     orgType:
       name: org_type
       in: query
@@ -112,19 +115,16 @@ components:
         - icb
         - regional_team
       description: NHS organisation type to break results down by.
-    date:
-      name: date
+    format:
+      name: format
       in: query
       schema:
         type: string
-        format: date
-      description: Month (YYYY-MM-DD, first of month) within the available 5-year window.
-    code:
-      name: code
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of BNF code prefixes (section, chemical or presentation).
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
     org:
       name: org
       in: query
@@ -132,6 +132,12 @@ components:
         type: string
       description: Comma-separated list of NHS organisation codes.
   schemas:
+    Error:
+      type: object
+      description: Django REST Framework error envelope.
+      properties:
+        detail:
+          type: string
     Spending:
       type: object
       properties:
@@ -147,12 +153,6 @@ components:
         row_id:
           type: string
         row_name:
-          type: string
-    Error:
-      type: object
-      description: Django REST Framework error envelope.
-      properties:
-        detail:
           type: string
   responses:
     BadRequest:

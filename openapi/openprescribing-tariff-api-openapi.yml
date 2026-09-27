@@ -177,6 +177,12 @@ components:
         text/csv:
           schema:
             type: string
+    BadRequest:
+      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Bubble:
       description: Bubble-chart series and categories.
       content:
@@ -196,12 +202,13 @@ components:
                 type: array
                 items:
                   type: object
-    BadRequest:
-      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: Django REST Framework error envelope.
+      properties:
+        detail:
+          type: string
   parameters:
     format:
       name: format
@@ -213,10 +220,3 @@ components:
         - csv
         default: json
       description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
-  schemas:
-    Error:
-      type: object
-      description: Django REST Framework error envelope.
-      properties:
-        detail:
-          type: string

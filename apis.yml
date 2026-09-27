@@ -52,40 +52,6 @@ created: '2026-07-24'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
-- aid: openprescribing:openprescribing-spending-api
-  name: OpenPrescribing Spending API
-  description: Retrieve total prescribing spending, quantity and items across the last five years of the
-    English Prescribing Dataset — by BNF code (section, chemical or presentation) and by NHS organisation
-    (practice, PCN, Sub-ICB Location, ICB, Regional Team), plus drug-tariff, price-per-unit, ghost-generic
-    and bubble-chart data. Returns JSON or CSV.
-  humanURL: https://openprescribing.net/api/
-  baseURL: https://openprescribing.net/api/1.0
-  tags:
-  - Prescribing
-  - Spending
-  - Pharmacy
-  properties:
-  - type: Documentation
-    url: https://openprescribing.net/api/
-  - type: APIReference
-    url: https://openprescribing.net/api/
-- aid: openprescribing:openprescribing-measures-api
-  name: OpenPrescribing Measures API
-  description: Standardised NHS prescribing-quality and safety measures (numerators, denominators and
-    calculated values) at national, Regional Team, ICB, Sub-ICB Location, PCN and practice level. These
-    endpoints power the OpenPrescribing measure dashboards and are served under the public /api/1.0/ surface;
-    they are not featured on the main /api/ documentation page. Returns JSON or CSV.
-  humanURL: https://openprescribing.net/api/
-  baseURL: https://openprescribing.net/api/1.0
-  tags:
-  - Prescribing
-  - Measures
-  - Public Health
-  properties:
-  - type: Documentation
-    url: https://openprescribing.net/api/
-  - type: APIReference
-    url: https://openprescribing.net/measure/
 - aid: openprescribing:openprescribing-information-api
   name: OpenPrescribing Information API
   description: Reference-data lookups for the prescribing dataset — search BNF sections, chemicals and
@@ -105,14 +71,23 @@ apis:
     url: https://openprescribing.net/api/
 - aid: openprescribing:openprescribing-measures-api
   name: OpenPrescribing Measures API
-  description: Standardised NHS prescribing-quality and safety measures.
+  description: Standardised NHS prescribing-quality and safety measures (numerators, denominators and calculated
+    values) at national, Regional Team, ICB, Sub-ICB Location, PCN and practice level. These endpoints power
+    the OpenPrescribing measure dashboards and are served under the public /api/1.0/ surface; they are not
+    featured on the main /api/ documentation page. Returns JSON or CSV.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
   - Measures
+  - Prescribing
+  - Public Health
   properties:
   - type: OpenAPI
     url: openapi/openprescribing-measures-api-openapi.yml
+  - type: Documentation
+    url: https://openprescribing.net/api/
+  - type: APIReference
+    url: https://openprescribing.net/measure/
 - aid: openprescribing:openprescribing-reference-api
   name: OpenPrescribing Reference API
   description: BNF code, organisation code and organisation-location reference lookups.
@@ -125,14 +100,23 @@ apis:
     url: openapi/openprescribing-reference-api-openapi.yml
 - aid: openprescribing:openprescribing-spending-api
   name: OpenPrescribing Spending API
-  description: Prescribing spending, quantity and item counts by BNF code and organisation.
+  description: Retrieve total prescribing spending, quantity and items across the last five years of the
+    English Prescribing Dataset — by BNF code (section, chemical or presentation) and by NHS organisation
+    (practice, PCN, Sub-ICB Location, ICB, Regional Team), plus drug-tariff, price-per-unit, ghost-generic
+    and bubble-chart data. Returns JSON or CSV.
   humanURL: https://openprescribing.net/api/
   baseURL: https://openprescribing.net/api/1.0
   tags:
   - Spending
+  - Prescribing
+  - Pharmacy
   properties:
   - type: OpenAPI
     url: openapi/openprescribing-spending-api-openapi.yml
+  - type: Documentation
+    url: https://openprescribing.net/api/
+  - type: APIReference
+    url: https://openprescribing.net/api/
 - aid: openprescribing:openprescribing-tariff-api
   name: OpenPrescribing Tariff API
   description: Drug-tariff prices and price-per-unit / ghost-generic savings data.
