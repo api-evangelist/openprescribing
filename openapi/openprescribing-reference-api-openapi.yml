@@ -137,6 +137,38 @@ paths:
               schema:
                 type: object
 components:
+  parameters:
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+  schemas:
+    Error:
+      type: object
+      description: Django REST Framework error envelope.
+      properties:
+        detail:
+          type: string
+    BnfCode:
+      type: object
+      properties:
+        type:
+          type: string
+          description: One of BNF chapter/section/paragraph/subparagraph, chemical, product, product format.
+        id:
+          type: string
+        name:
+          type: string
+        is_generic:
+          type: boolean
+        section:
+          type: string
   responses:
     GenericList:
       description: A list of result objects.
@@ -163,35 +195,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  schemas:
-    Error:
-      type: object
-      description: Django REST Framework error envelope.
-      properties:
-        detail:
-          type: string
-    BnfCode:
-      type: object
-      properties:
-        type:
-          type: string
-          description: One of BNF chapter/section/paragraph/subparagraph, chemical, product, product format.
-        id:
-          type: string
-        name:
-          type: string
-        is_generic:
-          type: boolean
-        section:
-          type: string
-  parameters:
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.

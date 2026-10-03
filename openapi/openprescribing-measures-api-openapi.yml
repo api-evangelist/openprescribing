@@ -152,18 +152,48 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
+  parameters:
+    measure:
+      name: measure
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of measure ids.
+    tags:
+      name: tags
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of measure tags to filter by.
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+    parentOrgType:
+      name: parent_org_type
+      in: query
+      schema:
+        type: string
+      description: Parent organisation type to scope the query to.
+    orgList:
+      name: org
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of NHS organisation codes.
+    aggregate:
+      name: aggregate
+      in: query
+      schema:
+        type: boolean
+      description: Aggregate values across all organisations of the requested type.
   responses:
-    GenericList:
-      description: A list of result objects.
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: object
-        text/csv:
-          schema:
-            type: string
     MeasureList:
       description: A list of measure values.
       content:
@@ -172,6 +202,17 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/MeasureValue'
+        text/csv:
+          schema:
+            type: string
+    GenericList:
+      description: A list of result objects.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
         text/csv:
           schema:
             type: string
@@ -214,44 +255,3 @@ components:
           type:
           - number
           - 'null'
-  parameters:
-    aggregate:
-      name: aggregate
-      in: query
-      schema:
-        type: boolean
-      description: Aggregate values across all organisations of the requested type.
-    tags:
-      name: tags
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of measure tags to filter by.
-    measure:
-      name: measure
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of measure ids.
-    orgList:
-      name: org
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of NHS organisation codes.
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
-    parentOrgType:
-      name: parent_org_type
-      in: query
-      schema:
-        type: string
-      description: Parent organisation type to scope the query to.
