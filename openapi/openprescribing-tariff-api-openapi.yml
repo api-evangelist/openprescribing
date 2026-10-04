@@ -165,18 +165,13 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
-  parameters:
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
   responses:
+    BadRequest:
+      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     GenericList:
       description: A list of result objects.
       content:
@@ -207,12 +202,17 @@ components:
                 type: array
                 items:
                   type: object
-    BadRequest:
-      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
   schemas:
     Error:
       type: object
