@@ -88,18 +88,6 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   responses:
-    NotFound:
-      description: Date outside the available data window, or resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     SpendingList:
       description: A list of monthly spending rows.
       content:
@@ -111,50 +99,18 @@ components:
         text/csv:
           schema:
             type: string
-  parameters:
-    org:
-      name: org
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of NHS organisation codes.
-    orgType:
-      name: org_type
-      in: query
-      schema:
-        type: string
-        enum:
-        - practice
-        - pcn
-        - ccg
-        - sicbl
-        - stp
-        - icb
-        - regional_team
-      description: NHS organisation type to break results down by.
-    date:
-      name: date
-      in: query
-      schema:
-        type: string
-        format: date
-      description: Month (YYYY-MM-DD, first of month) within the available 5-year window.
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
-    code:
-      name: code
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of BNF code prefixes (section, chemical or presentation).
+    BadRequest:
+      description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Date outside the available data window, or resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Spending:
       type: object
@@ -178,3 +134,47 @@ components:
       properties:
         detail:
           type: string
+  parameters:
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+    code:
+      name: code
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of BNF code prefixes (section, chemical or presentation).
+    org:
+      name: org
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of NHS organisation codes.
+    date:
+      name: date
+      in: query
+      schema:
+        type: string
+        format: date
+      description: Month (YYYY-MM-DD, first of month) within the available 5-year window.
+    orgType:
+      name: org_type
+      in: query
+      schema:
+        type: string
+        enum:
+        - practice
+        - pcn
+        - ccg
+        - sicbl
+        - stp
+        - icb
+        - regional_team
+      description: NHS organisation type to break results down by.

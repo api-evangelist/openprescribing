@@ -138,14 +138,6 @@ paths:
                 type: object
 components:
   responses:
-    BnfCodeList:
-      description: A list of matching BNF hierarchy entries.
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/BnfCode'
     BadRequest:
       description: Invalid request (bad/missing parameter, unrecognised org type, invalid code).
       content:
@@ -163,17 +155,14 @@ components:
         text/csv:
           schema:
             type: string
-  parameters:
-    format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        default: json
-      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
+    BnfCodeList:
+      description: A list of matching BNF hierarchy entries.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BnfCode'
   schemas:
     BnfCode:
       type: object
@@ -195,3 +184,14 @@ components:
       properties:
         detail:
           type: string
+  parameters:
+    format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        default: json
+      description: Response format. May also be supplied as a URL suffix (.json / .csv) via DRF format_suffix_patterns.
