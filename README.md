@@ -1,4 +1,4 @@
-# OpenPrescribing (openprescribing)
+# OpenPrescribing
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,81 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-OpenPrescribing.net is an open-data service built and operated by the Bennett Institute for Applied Data Science at the University of Oxford. It turns the English Prescribing Dataset published monthly by the NHS Business Services Authority into public dashboards, prescribing-safety measures, and a free RESTful API covering primary-care GP prescribing across England. It is an independent academic analytics platform layered on NHS open data — not an NHS FHIR clinical system. Currently no registration or API key is required.
+OpenPrescribing.net is an open-data service built and operated by the Bennett Institute for Applied Data Science at the University of Oxford. It turns the English Prescribing Dataset published monthly by the NHS Business Services Authority into public dashboards, prescribing-safety measures, and a free RESTful API covering primary-care GP prescribing across England. The API exposes spending, quantity and item counts by BNF code and by NHS organisation (practice, PCN, Sub-ICB Location, ICB, Regional Team), standardised prescribing measures, drug-tariff and price-per-unit data, and organisation reference/boundary lookups, all returned as JSON, CSV or GeoJSON. Home market is the United Kingdom (England prescribing data). It is an independent academic analytics platform layered on NHS open data, not an NHS FHIR clinical system; there is no OAuth, no SMART-on-FHIR, and currently no registration or API key is required.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/openprescribing/refs/heads/main/apis.yml)
+**Areas:** Healthcare · United Kingdom · NHS · Prescribing · Pharmacy · Open Data · Primary Care · Public Health · Analytics
 
-## Tags
+## OpenPrescribing on APIs.io
 
-- Healthcare
-- United Kingdom
-- NHS
-- Prescribing
-- Pharmacy
-- Open Data
-- Primary Care
-- Public Health
-- Analytics
+Everything profiled for OpenPrescribing is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openprescribing/](https://apis.io/providers/openprescribing/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+- [OpenPrescribing Information API](https://apis.io/apis/openprescribing/openprescribing-information-api/) — Reference-data lookups for the prescribing dataset — search BNF sections, chemicals and presentations by name or code; look up NHS organisations (Sub-ICB…
+- [OpenPrescribing Measures API](https://apis.io/apis/openprescribing/openprescribing-measures-api/) — Standardised NHS prescribing-quality and safety measures (numerators, denominators and calculated values) at national, Regional Team, ICB, Sub-ICB Location,…
+- [OpenPrescribing Reference API](https://apis.io/apis/openprescribing/openprescribing-reference-api/) — BNF code, organisation code and organisation-location reference lookups.
+- [OpenPrescribing Spending API](https://apis.io/apis/openprescribing/openprescribing-spending-api/) — Retrieve total prescribing spending, quantity and items across the last five years of the English Prescribing Dataset — by BNF code (section, chemical or…
+- [OpenPrescribing Tariff API](https://apis.io/apis/openprescribing/openprescribing-tariff-api/) — Drug-tariff prices and price-per-unit / ghost-generic savings data.
 
-## APIs
+### Published properties
 
-### OpenPrescribing Spending API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Retrieve total prescribing spending, quantity and items across the last five years of the English Prescribing Dataset — by BNF code (section, chemical or presentation) and by NHS organisation (practice, PCN, Sub-ICB Location, ICB, Regional Team), plus drug-tariff, price-per-unit, ghost-generic and bubble-chart data. Returns JSON or CSV.
+#### MCP servers (1)
 
-- **Human URL:** [https://openprescribing.net/api/](https://openprescribing.net/api/)
-- **Base URL:** `https://openprescribing.net/api/1.0`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [openprescribing](https://apis.io/servers/openprescribing/openprescribing/)
 
-- Prescribing
-- Spending
-- Pharmacy
+#### Agentic access (1)
 
-### OpenPrescribing Measures API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Standardised NHS prescribing-quality and safety measures (numerators, denominators and calculated values) at national, Regional Team, ICB, Sub-ICB Location, PCN and practice level. These endpoints power the OpenPrescribing measure dashboards and are served under the public `/api/1.0/` surface. Returns JSON or CSV.
+- [Openprescribing Agentic Access](https://apis.io/agentic-access/openprescribing/openprescribing-agentic-access/)
 
-- **Human URL:** [https://openprescribing.net/api/](https://openprescribing.net/api/)
-- **Base URL:** `https://openprescribing.net/api/1.0`
+#### Collections (1)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Prescribing
-- Measures
-- Public Health
+- [OpenPrescribing API](https://apis.io/collections/openprescribing/open-openprescribing/)
 
-### OpenPrescribing Information API
+#### Overlays (1)
 
-Reference-data lookups for the prescribing dataset — search BNF sections, chemicals and presentations by name or code; look up NHS organisations (Sub-ICB Location or practice) by code or name; retrieve list size and ASTRO-PU details; and fetch Sub-ICB Location boundaries or approximate practice locations as GeoJSON.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://openprescribing.net/api/](https://openprescribing.net/api/)
-- **Base URL:** `https://openprescribing.net/api/1.0`
+- [Openprescribing Openapi Overlay](https://apis.io/overlays/openprescribing/openprescribing-openapi-overlay/)
 
-#### Tags
+#### Security (2)
 
-- Reference Data
-- BNF
-- Organisations
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Openprescribing Authentication](https://apis.io/security/openprescribing/openprescribing-authentication/)
+- [Openprescribing Domain Security](https://apis.io/security/openprescribing/openprescribing-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://openprescribing.net/)
-- [Developer Portal](https://openprescribing.net/api/)
 - [Documentation](https://openprescribing.net/api/)
-- [API Reference](https://openprescribing.net/api/)
-- [About](https://openprescribing.net/about/)
-- [Support / FAQ](https://openprescribing.net/faq/)
-- [GitHub Organization](https://github.com/bennettoxford)
-- [Source Code](https://github.com/bennettoxford/openprescribing)
+- [Getting started](https://openprescribing.net/api/)
+- [API reference](https://openprescribing.net/api/)
+- [Support](https://openprescribing.net/faq/)
 - [Blog](https://www.bennett.ox.ac.uk/openprescribing/blog/)
+- [GitHub](https://github.com/bennettoxford)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 45.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 0.0 |
+
+**Agent readiness 21.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.3** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openprescribing/](https://apis.io/providers/openprescribing/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenPrescribing: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openprescribing/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
